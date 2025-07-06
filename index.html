@@ -1,398 +1,874 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanzim Mahmud Prantik | Aspiring Textile Leader</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanzim Mahmud Prantik | Textile Engineering Portfolio</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <!-- Favicon - A simple initial 'P' -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🅿️</text></svg>">
 
+    <!-- Embedded CSS -->
     <style>
-        /* Custom styles to integrate with Tailwind */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #e2e8f0; /* slate-200 */
+        /* ================================================================
+        CSS STYLES (style.css & custom theme)
+        ================================================================
+        */
+
+        /* GENERAL */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* The canvas will be fixed behind all other content */
-        #particle-canvas {
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f9fafb; /* Light Gray Background */
+            color: #374151; /* Dark Gray Text */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        p {
+            color: #4b5563; /* Medium-Dark Gray Text */
+        }
+
+        /* TRANSITION */
+        a,
+        .btn {
+            transition: all 300ms ease;
+        }
+
+        /* DESKTOP NAV */
+        nav,
+        .nav-links {
+            display: flex;
+        }
+
+        nav {
+            justify-content: space-around;
+            align-items: center;
+            height: 17vh;
+            background-color: rgba(249, 250, 251, 0.8); /* Semi-transparent white */
+            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -1; /* Places canvas behind other content */
+            z-index: 100;
         }
 
-        /* Glassmorphism effect for the navbar and cards */
-        .glass-effect {
-            background: rgba(17, 24, 39, 0.6); /* gray-900 with opacity */
+        .nav-links {
+            gap: 2rem;
+            list-style: none;
+            font-size: 1.5rem;
+        }
+
+        a {
+            color: #1f2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2563eb; /* Blue for hover */
+            text-decoration: none;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .logo:hover {
+            cursor: default;
+        }
+
+        /* HAMBURGER MENU */
+        #hamburger-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(249, 250, 251, 0.8);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Custom gradient for text */
-        .gradient-text {
-            background: linear-gradient(to right, #38bdf8, #a78bfa);
+        .hamburger-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .hamburger-icon span {
+            width: 100%;
+            height: 2px;
+            background-color: #111827;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-links {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #ffffff;
+            width: fit-content;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .menu-links a {
+            display: block;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #111827;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-links li {
+            list-style: none;
+        }
+
+        .menu-links.open {
+            max-height: 300px;
+        }
+
+        .hamburger-icon.open span:first-child {
+            transform: rotate(45deg) translate(10px, 5px);
+        }
+
+        .hamburger-icon.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-icon.open span:last-child {
+            transform: rotate(-45deg) translate(10px, -5px);
+        }
+
+        /* SECTIONS */
+        section {
+            padding-top: 17vh; /* To offset fixed nav */
+            margin: 0 10rem;
+            min-height: fit-content;
+        }
+        
+        #profile {
+            padding-top: 0; /* Profile section starts at top */
+        }
+
+        .section-container {
+            display: flex;
+        }
+
+        /* PROFILE SECTION */
+        #profile {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            height: 100vh;
+        }
+
+        .section__pic-container {
+            display: flex;
+            height: 400px;
+            width: 400px;
+            margin: auto 0;
+        }
+        
+        .section__pic-container img {
+            border-radius: 50%;
+            border: 3px solid #2563eb;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .section__text {
+            align-self: center;
+            text-align: center;
+        }
+
+        .section__text p {
+            font-weight: 600;
+        }
+
+        .section__text__p1 {
+            text-align: center;
+            font-size: 1.25rem;
+        }
+
+        .section__text__p2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+
+        .title {
+            font-size: 3rem;
+            text-align: center;
+            color: #111827;
+        }
+        
+        .title.gradient-text {
+            background: linear-gradient(to right, #1d4ed8, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
         }
 
-        /* Style for the active navigation link */
-        .nav-link-active {
-            color: #38bdf8; /* sky-500 */
+        #socials-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+
+        /* ICONS */
+        .icon {
+            cursor: pointer;
+            height: 2rem;
+        }
+        
+        #socials-container .icon {
+             filter: grayscale(100%) contrast(10%);
+        }
+        #socials-container .icon:hover {
+            filter: none;
+        }
+
+        /* BUTTONS */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            font-weight: 600;
+            padding: 1rem;
+            width: 8rem;
+            border-radius: 2rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-color-1 {
+            background: #2563eb;
+            color: #ffffff;
+        }
+        .btn-color-1:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-color-2 {
+            background: transparent;
+            color: #374151;
+            border: #374151 0.1rem solid;
+        }
+
+        .btn-color-2:hover {
+            background: #f3f4f6;
+        }
+
+        /* ABOUT SECTION */
+        #about {
+            position: relative;
+        }
+
+        .about-containers {
+            gap: 2rem;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-details-container {
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .about-containers,
+        .about-details-container {
+            display: flex;
+        }
+
+        .about-pic {
+            border-radius: 2rem;
+        }
+
+        .arrow {
+            position: absolute;
+            right: -5rem;
+            bottom: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .details-container {
+            padding: 1.5rem;
+            flex: 1;
+            background: #ffffff;
+            border-radius: 2rem;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+            transition: all 300ms ease;
+        }
+        
+        .details-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-color: #d1d5db;
+        }
+
+        .section-container {
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+        
+        .text-container {
+            text-align: justify;
+        }
+
+        /* EXPERIENCE SECTION */
+        #experience {
+            position: relative;
+        }
+
+        .experience-sub-title {
+            color: #111827;
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience-details-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .article-container {
+            display: flex;
+            text-align: initial;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 2.5rem;
+            justify-content: space-around;
+        }
+
+        article {
+            display: flex;
+            width: 10rem;
+            justify-content: flex-start;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        article .icon {
+            cursor: default;
+            height: 1.5rem;
+        }
+
+        article h3 {
+            color: #1f2937;
+        }
+
+        /* PROJECTS SECTION */
+        #projects {
+            position: relative;
+        }
+
+        .color-container {
+            border-color: #e5e7eb;
+            background: #ffffff;
+        }
+
+        .project-img {
+            border-radius: 2rem;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 300ms ease;
+        }
+        
+        .details-container:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .project-title {
+            margin: 1rem;
+            color: #111827;
+        }
+
+        .project-btn {
+            color: #374151;
+            border-color: #374151;
+        }
+        .project-btn:hover {
+            color: #ffffff;
+            background: #374151;
+        }
+
+        /* CONTACT */
+        #contact {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding-bottom: 7rem;
+        }
+
+        .contact-info-upper-container {
+            display: flex;
+            justify-content: center;
+            border-radius: 2rem;
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+            margin: 2rem auto;
+            padding: 0.5rem;
+        }
+
+        .contact-info-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem;
+        }
+
+        .contact-info-container p {
+            font-size: larger;
+        }
+        .contact-info-container a {
+            font-size: larger;
+        }
+
+        .contact-icon {
+            cursor: default;
+            height: 2rem;
+        }
+
+        /* FOOTER SECTION */
+        footer {
+            margin: 0 1rem;
+            padding: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        footer nav {
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        footer p {
+            text-align: center;
+        }
+        
+        /* ================================================================
+        MEDIA QUERIES (mediaqueries.css)
+        ================================================================
+        */
+
+        @media screen and (max-width: 1400px) {
+            #profile {
+                height: 83vh;
+                margin-bottom: 6rem;
+            }
+            .about-containers {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            #desktop-nav {
+                display: none;
+            }
+            #hamburger-nav {
+                display: flex;
+            }
+            #experience,
+            .experience-details-container {
+                margin-top: 2rem;
+            }
+            #profile,
+            .section-container {
+                display: block;
+            }
+            .arrow {
+                display: none;
+            }
+            section,
+            .section-container {
+                height: fit-content;
+            }
+            section {
+                margin: 0 5%;
+                padding-top: 10vh;
+            }
+             #profile {
+                height: auto;
+                padding-top: 17vh;
+             }
+            .section__pic-container {
+                width: 275px;
+                height: 275px;
+                margin: 0 auto 2rem;
+            }
+            .about-containers {
+                margin-top: 0;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            #contact,
+            footer {
+                height: auto;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+            #profile {
+                padding-top: 17vh;
+                height: auto;
+                margin-bottom: 0;
+            }
+            article {
+                font-size: 1rem;
+            }
+            footer nav {
+                height: fit-content;
+                margin-bottom: 2rem;
+            }
+            .about-containers,
+            .contact-info-upper-container,
+            .btn-container {
+                flex-wrap: wrap;
+            }
+            .contact-info-container {
+                margin: 0.5rem;
+                flex-basis: 100%;
+                justify-content: center;
+            }
+            .contact-info-container p,
+            .nav-links li a {
+                font-size: 1rem;
+            }
+            .experience-sub-title {
+                font-size: 1.25rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            .section__pic-container {
+                width: auto;
+                height: 60vw;
+                justify-content: center;
+            }
+            .section__text__p2 {
+                font-size: 1.25rem;
+            }
+            .title {
+                font-size: 2rem;
+            }
+            .text-container {
+                text-align: justify;
+            }
+            .contact-info-upper-container {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
-<body class="relative">
-
-    <!-- The background particle animation canvas -->
-    <canvas id="particle-canvas"></canvas>
-
-    <!-- Header / Navigation -->
-    <header id="header" class="glass-effect fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-xl font-bold tracking-wider gradient-text">PRANTIK</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="text-slate-300 hover:text-sky-400 transition duration-300">About</a>
-                <a href="#skills" class="text-slate-300 hover:text-sky-400 transition duration-300">Skills</a>
-                <a href="#portfolio" class="text-slate-300 hover:text-sky-400 transition duration-300">Portfolio</a>
-                <a href="#contact" class="text-slate-300 hover:text-sky-400 transition duration-300">Contact</a>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden text-slate-300 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+<body>
+    <!-- Desktop Navigation -->
+    <nav id="desktop-nav">
+        <div class="logo">Tanzim Mahmud Prantik</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Skills</a></li>
+                <li><a href="#projects">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#about" class="block py-2 text-slate-300 hover:text-sky-400">About</a>
-            <a href="#skills" class="block py-2 text-slate-300 hover:text-sky-400">Skills</a>
-            <a href="#portfolio" class="block py-2 text-slate-300 hover:text-sky-400">Portfolio</a>
-            <a href="#contact" class="block py-2 text-slate-300 hover:text-sky-400">Contact</a>
+    </nav>
+
+    <!-- Mobile (Hamburger) Navigation -->
+    <nav id="hamburger-nav">
+        <div class="logo">Tanzim Mahmud Prantik</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Portfolio</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Main Content Wrapper -->
-    <main class="container mx-auto px-6 z-10 relative">
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="https://placehold.co/400x400/e0e7ff/1d4ed8?text=Prantik" alt="Tanzim Mahmud Prantik profile picture" />
+        </div>
+        <div class="section__text">
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title gradient-text">Tanzim Mahmud Prantik</h1>
+            <p class="section__text__p2">Textile Engineering Student</p>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="window.open('https://placehold.co/827x1169?text=My+Resume.pdf')">
+                    Download CV
+                </button>
+                <button class="btn btn-color-1" onclick="location.href='#contact'">
+                    Contact Info
+                </button>
+            </div>
+            <div id="socials-container">
+                <!-- LinkedIn Icon -->
+                <a href="https://linkedin.com/" target="_blank">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="icon" alt="LinkedIn Profile"/>
+                </a>
+                <!-- GitHub Icon -->
+                <a href="https://github.com/" target="_blank">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="icon" alt="GitHub Profile"/>
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <!-- Home Section -->
-        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
-                Tanzim Mahmud Prantik
-            </h1>
-            <p class="mt-4 text-lg md:text-2xl font-medium gradient-text">
-                Textile Engineering Student | Future Industry Leader | Strategic Thinker
-            </p>
-            <a href="#about" class="mt-12 animate-bounce bg-white/10 p-3 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-            </a>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 md:py-32">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Me</h2>
-            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
-                <div class="md:w-1/3 text-center">
-                    <img src="https://placehold.co/400x400/111827/a78bfa?text=Prantik" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/111827/a78bfa?text=T.M.P';"
-                         alt="Tanzim Mahmud Prantik" 
-                         class="rounded-full w-48 h-48 md:w-64 md:h-64 mx-auto shadow-2xl shadow-purple-500/20 border-4 border-purple-500/50">
+    <!-- About Section -->
+    <section id="about">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="https://placehold.co/400x400/ffffff/7c3aed?text=Vision" alt="Profile picture" class="about-pic" />
+            </div>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <!-- Education Icon -->
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 8.5L6.91 9 12 6.31 17.09 9 12 11.5z'/%3E%3C/svg%3E" alt="Education icon" class="icon" style="height: 2.5rem; margin: 0 auto 1rem;" />
+                        <h3>Education</h3>
+                        <p>B.Sc. in Textile Engineering<br />KUET, Khulna</p>
+                    </div>
+                    <div class="details-container">
+                        <!-- Target Icon -->
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l1.41 1.41L12 16.83l4.09 4.08 1.41-1.41L13.41 15.4l4.08-4.09-1.41-1.41L12 13.98 7.91 9.9l-1.41 1.41L10.59 13l-4.08 4.09z'/%3E%3C/svg%3E" alt="Focus icon" class="icon" style="height: 2.5rem; margin: 0 auto 1rem;" />
+                        <h3>Focus Areas</h3>
+                        <p>Merchandising, IE, <br /> & Management</p>
+                    </div>
                 </div>
-                <div class="md:w-2/3 text-slate-300 text-lg text-center md:text-left">
-                    <p class="mb-4">
-                        I am a first-year B.Sc. in Textile Engineering student at KUET, driven by a clear vision: to become a transformational leader in Bangladesh's textile industry. My approach is rooted in strategic thinking, a passion for innovation, and a relentless pursuit of excellence.
-                    </p>
-                    <p class="mb-4">
-                        I am not just studying engineering; I am building a foundation for a career in merchandising, industrial engineering, and management. I thrive on solving complex problems and analyzing patterns, whether in engineering principles or in literature.
-                    </p>
+                <div class="text-container">
                     <p>
-                        My goal is to leverage technology, data, and creative strategy to drive growth and efficiency in the RMG sector. I am actively developing my skills in communication, leadership, and digital tools to prepare for the challenges ahead.
+                        I am a first-year Textile Engineering student with a clear vision: to become a transformational leader in Bangladesh's RMG sector. My academic path at KUET is a strategic choice, aimed at building a robust foundation in engineering, merchandising, and industrial management. I am driven by a passion for analyzing complex systems, finding patterns, and applying innovative thinking to solve real-world problems. My goal is to leverage technology and data-driven strategies to enhance efficiency and drive growth in the industry.
                     </p>
                 </div>
             </div>
-        </section>
+        </div>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7280'%3E%3Cpath d='M12 16.59l-6-6 1.41-1.41L12 13.77l4.59-4.58L18 10.59z'/%3E%3C/svg%3E" alt="Arrow icon" class="icon arrow" onclick="location.href='#experience'" />
+    </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 md:py-32">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Core Competencies</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                <!-- Skill Card -->
-                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
-                    <h3 class="font-bold text-lg text-white mb-2">Textile Fundamentals</h3>
-                    <p class="text-sm text-slate-400">Yarn, Fabric, Wet Processing, Garments Manufacturing.</p>
-                </div>
-                <!-- Skill Card -->
-                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
-                    <h3 class="font-bold text-lg text-white mb-2">Strategic Planning</h3>
-                    <p class="text-sm text-slate-400">Long-term vision, goal setting, and analytical decision-making.</p>
-                </div>
-                <!-- Skill Card -->
-                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
-                    <h3 class="font-bold text-lg text-white mb-2">Leadership</h3>
-                    <p class="text-sm text-slate-400">Developing skills for team building and people management.</p>
-                </div>
-                <!-- Skill Card -->
-                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
-                    <h3 class="font-bold text-lg text-white mb-2">Problem Solving</h3>
-                    <p class="text-sm text-slate-400">Analytical and creative approaches to complex challenges.</p>
-                </div>
-                <!-- Skill Card -->
-                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
-                    <h3 class="font-bold text-lg text-white mb-2">Digital Tools</h3>
-                    <p class="text-sm text-slate-400">Proficient in MS Office. Learning Canva & Digital Marketing.</p>
-                </div>
-                <!-- Skill Card -->
-                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
-                    <h3 class="font-bold text-lg text-white mb-2">Communication</h3>
-                    <p class="text-sm text-slate-400">Improving professional English for merchandising and management.</p>
-                </div>
-                <!-- Skill Card -->
-                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
-                    <h3 class="font-bold text-lg text-white mb-2">Merchandising</h3>
-                    <p class="text-sm text-slate-400">Focused on learning costing, consumption, and buyer communication.</p>
-                </div>
-                <!-- Skill Card -->
-                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
-                    <h3 class="font-bold text-lg text-white mb-2">Industrial Engineering</h3>
-                    <p class="text-sm text-slate-400">Understanding workflow, efficiency, and production optimization.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="py-20 md:py-32">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Portfolio & Writings</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Portfolio Item 1 -->
-                <div class="glass-effect rounded-lg overflow-hidden group">
-                    <img src="https://placehold.co/600x400/111827/38bdf8?text=Project+1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Project 1">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Project Title Placeholder</h3>
-                        <p class="text-slate-400 mb-4">A brief description of your project. This could be a case study, a research paper, or a practical assignment.</p>
-                        <a href="#" class="font-semibold text-sky-400 hover:text-sky-300">View Details &rarr;</a>
+    <!-- Experience/Skills Section -->
+    <section id="experience">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Core Competencies</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Technical & Analytical</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M9 4l-5 8h16l-5-8H9zm-1.5 9l-5 8h22l-5-8h-12z'/%3E%3C/svg%3E" alt="Experience icon" class="icon" />
+                            <div>
+                                <h3>Textile Fundamentals</h3>
+                                <p>Developing</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M9 4l-5 8h16l-5-8H9zm-1.5 9l-5 8h22l-5-8h-12z'/%3E%3C/svg%3E" alt="Experience icon" class="icon" />
+                            <div>
+                                <h3>Problem Solving</h3>
+                                <p>Developing</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M9 4l-5 8h16l-5-8H9zm-1.5 9l-5 8h22l-5-8h-12z'/%3E%3C/svg%3E" alt="Experience icon" class="icon" />
+                            <div>
+                                <h3>Strategic Thinking</h3>
+                                <p>Developing</p>
+                            </div>
+                        </article>
+                        <article>
+                           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M9 4l-5 8h16l-5-8H9zm-1.5 9l-5 8h22l-5-8h-12z'/%3E%3C/svg%3E" alt="Experience icon" class="icon" />
+                            <div>
+                                <h3>MS Excel</h3>
+                                <p>Learning</p>
+                            </div>
+                        </article>
                     </div>
                 </div>
-                <!-- Portfolio Item 2 -->
-                <div class="glass-effect rounded-lg overflow-hidden group">
-                    <img src="https://placehold.co/600x400/111827/a78bfa?text=My+Writings" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="My Writings on Medium">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Content & Articles</h3>
-                        <p class="text-slate-400 mb-4">I explore ideas on strategy, technology, and personal growth through my writing on Medium.</p>
-                        <a href="#" class="font-semibold text-purple-400 hover:text-purple-300">Read on Medium &rarr;</a>
-                    </div>
-                </div>
-                <!-- Portfolio Item 3 -->
-                <div class="glass-effect rounded-lg overflow-hidden group">
-                    <img src="https://placehold.co/600x400/111827/ec4899?text=Project+2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Project 2">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Another Project Title</h3>
-                        <p class="text-slate-400 mb-4">As I progress in my studies, I will showcase more of my work here. Stay tuned for updates.</p>
-                        <a href="#" class="font-semibold text-pink-400 hover:text-pink-300">Coming Soon &rarr;</a>
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Managerial & Creative</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M9 4l-5 8h16l-5-8H9zm-1.5 9l-5 8h22l-5-8h-12z'/%3E%3C/svg%3E" alt="Experience icon" class="icon" />
+                            <div>
+                                <h3>Leadership</h3>
+                                <p>Developing</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M9 4l-5 8h16l-5-8H9zm-1.5 9l-5 8h22l-5-8h-12z'/%3E%3C/svg%3E" alt="Experience icon" class="icon" />
+                            <div>
+                                <h3>Communication</h3>
+                                <p>Improving</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M9 4l-5 8h16l-5-8H9zm-1.5 9l-5 8h22l-5-8h-12z'/%3E%3C/svg%3E" alt="Experience icon" class="icon" />
+                            <div>
+                                <h3>Canva Design</h3>
+                                <p>Learning</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Cpath d='M9 4l-5 8h16l-5-8H9zm-1.5 9l-5 8h22l-5-8h-12z'/%3E%3C/svg%3E" alt="Experience icon" class="icon" />
+                            <div>
+                                <h3>Content Creation</h3>
+                                <p>Active</p>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7280'%3E%3Cpath d='M12 16.59l-6-6 1.41-1.41L12 13.77l4.59-4.58L18 10.59z'/%3E%3C/svg%3E" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Get In Touch</h2>
-            <p class="text-slate-400 max-w-2xl mx-auto mb-8">
-                I am always open to connecting with professionals, mentors, and peers. Whether you have a question, a collaboration idea, or just want to discuss the future of the textile industry, feel free to reach out.
-            </p>
-            <a href="mailto:your.email@example.com" class="inline-block bg-sky-500 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-sky-600 transition-colors duration-300">
-                Say Hello
-            </a>
-            <div class="flex justify-center space-x-6 mt-12">
-                <!-- Replace '#' with your actual profile links -->
-                <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.5 0h-15A4.5 4.5 0 000 4.5v15A4.5 4.5 0 004.5 24h15a4.5 4.5 0 004.5-4.5v-15A4.5 4.5 0 0019.5 0zm-11.25 19.5h-3V9h3v10.5zm-1.5-12a1.875 1.875 0 110-3.75 1.875 1.875 0 010 3.75zM19.5 19.5h-3v-5.25c0-1.25-.025-2.85-1.75-2.85-1.75 0-2.025 1.375-2.025 2.75V19.5h-3V9h2.875v1.313h.05c.4-.75 1.375-1.5 2.825-1.5 3.025 0 3.575 2 3.575 4.6v5.387z" clip-rule="evenodd"/></svg>
-                </a>
-                <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.238 2.633 7.855 6.357 9.252.22.04.298-.096.298-.213v-1.06c-2.55.553-3.09-1.233-3.09-1.233-.4-1.016-1.025-1.285-1.025-1.285-.8-.546.06-.535.06-.535.885.062 1.35 1.025 1.35 1.025.787 1.35 2.063.96 2.565.732.08-.57.308-1.025.565-1.26-1.95-.22-4-1.025-4-4.338 0-.96.343-1.745 1.025-2.36-.1-.22-.443-1.115.1-2.325 0 0 .737-.237 2.4 1.025A8.4 8.4 0 0112 8.312c.737 0 1.475.1 2.16.3.363-.487.7-.737 1.025-.96.737-1.2 1.763-1.2 2.4-1.2.545 1.21.2 2.105.1 2.325.68.615 1.025 1.4 1.025 2.36 0 3.325-2.05 4.113-4.013 4.338.318.275.6.813.6 1.637v2.4c0 .118.077.253.3.213C19.367 19.855 22 16.238 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                </a>
-                <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">
-                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.038c-2.734 0-3.073.012-4.148.06-1.075.05-1.81.21-2.44.46-.64.25-1.17.59-1.7.1.13-.53.47-1.06.72-1.7C3.21 2.298 2.47 2.088 1.4 2.038c-1.075-.048-1.414-.06-4.148-.06s-3.073.012-4.148.06c-1.075.05-1.81.21-2.44.46-.64.25-1.17.59-1.7.1.13-.53.47-1.06.72-1.7C3.21 2.298 2.47 2.088 1.4 2.038zm0-2.038c2.768 0 3.11.012 4.192.06 1.08.05 1.96.22 2.65.49.71.27 1.32.64 1.92 1.24s.97 1.21 1.24 1.92c.27.69.44 1.57.49 2.65.048 1.082.06 1.424.06 4.192s-.012 3.11-.06 4.192c-.05 1.08-.22 1.96-.49 2.65-.27.71-.64 1.32-1.24 1.92s-1.21.97-1.92 1.24c-.69.27-1.57.44-2.65.49-1.082.048-1.424.06-4.192.06s-3.11-.012-4.192-.06c-1.08-.05-1.96-.22-2.65-.49-.71-.27-1.32-.64-1.92-1.24s-.97-1.21-1.24-1.92c-.27-.69-.44-1.57-.49-2.65-.048-1.082-.06-1.424-.06-4.192s.012-3.11.06-4.192c.05-1.08.22-1.96.49-2.65.27-.71.64-1.32 1.24-1.92S5.33 2.81 6.04 2.54c.69-.27 1.57-.44 2.65-.49 1.082-.048 1.424-.06 4.192-.06zm0 5.838a6.124 6.124 0 100 12.248 6.124 6.124 0 000-12.248zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
-                </a>
+    <!-- Projects Section -->
+    <section id="projects">
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Portfolio</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://placehold.co/600x400/ffffff/1d4ed8?text=Academic+Project" alt="Project 1" class="project-img" />
+                    </div>
+                    <h2 class="experience-sub-title project-title">Academic Project 1</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
+                            Github
+                        </button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
+                            Live Demo
+                        </button>
+                    </div>
+                </div>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://placehold.co/600x400/ffffff/7c3aed?text=My+Writings" alt="Project 2" class="project-img" />
+                    </div>
+                    <h2 class="experience-sub-title project-title">Content & Articles</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://medium.com/'">
+                            Read on Medium
+                        </button>
+                    </div>
+                </div>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://placehold.co/600x400/ffffff/db2777?text=Case+Study" alt="Project 3" class="project-img" />
+                    </div>
+                    <h2 class="experience-sub-title project-title">Industry Case Study</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
+                            Github
+                        </button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
+                            Read More
+                        </button>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7280'%3E%3Cpath d='M12 16.59l-6-6 1.41-1.41L12 13.77l4.59-4.58L18 10.59z'/%3E%3C/svg%3E" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
+    </section>
 
-    </main>
+    <!-- Contact Section -->
+    <section id="contact">
+        <p class="section__text__p1">Get in Touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <!-- Email Icon -->
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231f2937'%3E%3Cpath d='M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z'/%3E%3C/svg%3E" class="icon contact-icon"/>
+                <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            </div>
+            <div class="contact-info-container">
+                <!-- LinkedIn Icon -->
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231f2937'%3E%3Cpath d='M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.75c0-1.4-.7-2.5-2.5-2.5S11 12.85 11 14.25V19h-3v-9h2.9v1.3a3.11 3.11 0 012.6-1.5c2.3 0 3.5 1.6 3.5 4.2z'/%3E%3C/svg%3E" class="icon contact-icon"/>
+                <p><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="text-center py-8 border-t border-slate-800">
-        <p class="text-slate-500">&copy; <span id="year"></span> Tanzim Mahmud Prantik. All Rights Reserved.</p>
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Skills</a></li>
+                    <li><a href="#projects">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>Copyright &#169; <span id="year"></span> Tanzim Mahmud Prantik. All Rights Reserved.</p>
     </footer>
 
+    <!-- Embedded JavaScript -->
     <script>
-        // --- Mobile Menu Toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        /* ================================================================
+        INTERACTIVITY SCRIPT (script.js)
+        ================================================================
+        */
+        function toggleMenu() {
+            const menu = document.querySelector(".menu-links");
+            const icon = document.querySelector(".hamburger-icon");
+            menu.classList.toggle("open");
+            icon.classList.toggle("open");
+        }
 
         // --- Dynamic Year for Footer ---
         document.getElementById('year').textContent = new Date().getFullYear();
-        
-        // --- Particle Animation ---
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-
-        let particlesArray;
-
-        // Mouse position
-        const mouse = {
-            x: null,
-            y: null,
-            radius: 150
-        }
-
-        window.addEventListener('mousemove', function(event) {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-        
-        // Set canvas size
-        function setCanvasSize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        setCanvasSize();
-
-        // Particle class
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
-                this.size = size;
-                this.color = color;
-            }
-
-            // Method to draw individual particle
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            }
-
-            // Check particle position, mouse position, move the particle, draw the particle
-            update() {
-                // Check if particle is still within canvas
-                if (this.x > canvas.width || this.x < 0) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height || this.y < 0) {
-                    this.directionY = -this.directionY;
-                }
-
-                // Check collision detection - mouse position / particle position
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx*dx + dy*dy);
-                if (distance < mouse.radius + this.size){
-                    if(mouse.x < this.x && this.x < canvas.width - this.size * 10){
-                        this.x += 5;
-                    }
-                    if(mouse.x > this.x && this.x > this.size * 10){
-                        this.x -= 5;
-                    }
-                    if(mouse.y < this.y && this.y < canvas.height - this.size * 10){
-                        this.y += 5;
-                    }
-                    if(mouse.y > this.y && this.y > this.size * 10){
-                        this.y -= 5;
-                    }
-                }
-                // Move particle
-                this.x += this.directionX;
-                this.y += this.directionY;
-                // Draw particle
-                this.draw();
-            }
-        }
-
-        // Create particle array
-        function init() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * .4) - .2;
-                let directionY = (Math.random() * .4) - .2;
-                let color = 'rgba(167, 139, 250, 0.8)'; // violet-400
-
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-            }
-        }
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connect();
-        }
-
-        // Check if particles are close enough to draw a line between them
-        function connect(){
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                    + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    
-                    if (distance < (canvas.width/7) * (canvas.height/7)) {
-                        opacityValue = 1 - (distance/20000);
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${opacityValue})`; // sky-400
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        // Resize event
-        window.addEventListener('resize', function(){
-            setCanvasSize();
-            init();
-        });
-        
-        // Mouse out event
-        window.addEventListener('mouseout', function(){
-            mouse.x = undefined;
-            mouse.y = undefined;
-        })
-
-        // Start animation
-        init();
-        animate();
-
     </script>
 </body>
 </html>
