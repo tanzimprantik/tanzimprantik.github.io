@@ -1,98 +1,398 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tanzim Prantik | Portfolio Website" />
-  <title>Tanzim Prantik | Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background-color: #4c1d95;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    nav {
-      text-align: center;
-      background-color: #ede9fe;
-      padding: 1rem;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #4c1d95;
-      font-weight: bold;
-    }
-    section {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    }
-    h2 {
-      border-bottom: 2px solid #4c1d95;
-      padding-bottom: 0.5rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      background-color: #4c1d95;
-      color: white;
-      margin-top: 4rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzim Mahmud Prantik | Aspiring Textile Leader</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Favicon - A simple initial 'P' -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🅿️</text></svg>">
+
+    <style>
+        /* Custom styles to integrate with Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0; /* slate-200 */
+        }
+
+        /* The canvas will be fixed behind all other content */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Places canvas behind other content */
+        }
+
+        /* Glassmorphism effect for the navbar and cards */
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.6); /* gray-900 with opacity */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom gradient for text */
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* Style for the active navigation link */
+        .nav-link-active {
+            color: #38bdf8; /* sky-500 */
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Tanzim Prantik</h1>
-    <p>Textile Engineer | Future Industry Leader | Lifelong Learner</p>
-  </header>
+<body class="relative">
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <!-- The background particle animation canvas -->
+    <canvas id="particle-canvas"></canvas>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a 1st-year B.Sc. in Textile Engineering student at KUET. Passionate about combining engineering skills with communication, leadership, and management. I aim to become a top-level executive in the textile industry while developing creative and innovative solutions.
-    </p>
-  </section>
+    <!-- Header / Navigation -->
+    <header id="header" class="glass-effect fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold tracking-wider gradient-text">PRANTIK</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-slate-300 hover:text-sky-400 transition duration-300">About</a>
+                <a href="#skills" class="text-slate-300 hover:text-sky-400 transition duration-300">Skills</a>
+                <a href="#portfolio" class="text-slate-300 hover:text-sky-400 transition duration-300">Portfolio</a>
+                <a href="#contact" class="text-slate-300 hover:text-sky-400 transition duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-slate-300 hover:text-sky-400">About</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-sky-400">Skills</a>
+            <a href="#portfolio" class="block py-2 text-slate-300 hover:text-sky-400">Portfolio</a>
+            <a href="#contact" class="block py-2 text-slate-300 hover:text-sky-400">Contact</a>
+        </div>
+    </header>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Excel Dashboard:</strong> Basic production planning sheet for textile merchandisers</li>
-      <li><strong>Canva Posters:</strong> Creative banners for academic and club events</li>
-      <li><strong>Blog Articles:</strong> Published beginner content on Textile Tools and Career Guidance (coming soon)</li>
-    </ul>
-  </section>
+    <!-- Main Content Wrapper -->
+    <main class="container mx-auto px-6 z-10 relative">
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:tanzimprantik@gmail.com">tanzimprantik@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/tanzimprantik" target="_blank">github.com/tanzimprantik</a></p>
-    <p>LinkedIn: Coming soon</p>
-  </section>
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+                Tanzim Mahmud Prantik
+            </h1>
+            <p class="mt-4 text-lg md:text-2xl font-medium gradient-text">
+                Textile Engineering Student | Future Industry Leader | Strategic Thinker
+            </p>
+            <a href="#about" class="mt-12 animate-bounce bg-white/10 p-3 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </a>
+        </section>
 
-  <footer>
-    &copy; 2025 Tanzim Prantik. All rights reserved.
-  </footer>
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Me</h2>
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/3 text-center">
+                    <img src="https://placehold.co/400x400/111827/a78bfa?text=Prantik" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/111827/a78bfa?text=T.M.P';"
+                         alt="Tanzim Mahmud Prantik" 
+                         class="rounded-full w-48 h-48 md:w-64 md:h-64 mx-auto shadow-2xl shadow-purple-500/20 border-4 border-purple-500/50">
+                </div>
+                <div class="md:w-2/3 text-slate-300 text-lg text-center md:text-left">
+                    <p class="mb-4">
+                        I am a first-year B.Sc. in Textile Engineering student at KUET, driven by a clear vision: to become a transformational leader in Bangladesh's textile industry. My approach is rooted in strategic thinking, a passion for innovation, and a relentless pursuit of excellence.
+                    </p>
+                    <p class="mb-4">
+                        I am not just studying engineering; I am building a foundation for a career in merchandising, industrial engineering, and management. I thrive on solving complex problems and analyzing patterns, whether in engineering principles or in literature.
+                    </p>
+                    <p>
+                        My goal is to leverage technology, data, and creative strategy to drive growth and efficiency in the RMG sector. I am actively developing my skills in communication, leadership, and digital tools to prepare for the challenges ahead.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Core Competencies</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <!-- Skill Card -->
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="font-bold text-lg text-white mb-2">Textile Fundamentals</h3>
+                    <p class="text-sm text-slate-400">Yarn, Fabric, Wet Processing, Garments Manufacturing.</p>
+                </div>
+                <!-- Skill Card -->
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="font-bold text-lg text-white mb-2">Strategic Planning</h3>
+                    <p class="text-sm text-slate-400">Long-term vision, goal setting, and analytical decision-making.</p>
+                </div>
+                <!-- Skill Card -->
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="font-bold text-lg text-white mb-2">Leadership</h3>
+                    <p class="text-sm text-slate-400">Developing skills for team building and people management.</p>
+                </div>
+                <!-- Skill Card -->
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="font-bold text-lg text-white mb-2">Problem Solving</h3>
+                    <p class="text-sm text-slate-400">Analytical and creative approaches to complex challenges.</p>
+                </div>
+                <!-- Skill Card -->
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="font-bold text-lg text-white mb-2">Digital Tools</h3>
+                    <p class="text-sm text-slate-400">Proficient in MS Office. Learning Canva & Digital Marketing.</p>
+                </div>
+                <!-- Skill Card -->
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="font-bold text-lg text-white mb-2">Communication</h3>
+                    <p class="text-sm text-slate-400">Improving professional English for merchandising and management.</p>
+                </div>
+                <!-- Skill Card -->
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="font-bold text-lg text-white mb-2">Merchandising</h3>
+                    <p class="text-sm text-slate-400">Focused on learning costing, consumption, and buyer communication.</p>
+                </div>
+                <!-- Skill Card -->
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="font-bold text-lg text-white mb-2">Industrial Engineering</h3>
+                    <p class="text-sm text-slate-400">Understanding workflow, efficiency, and production optimization.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 md:py-32">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Portfolio & Writings</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Portfolio Item 1 -->
+                <div class="glass-effect rounded-lg overflow-hidden group">
+                    <img src="https://placehold.co/600x400/111827/38bdf8?text=Project+1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Project 1">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Project Title Placeholder</h3>
+                        <p class="text-slate-400 mb-4">A brief description of your project. This could be a case study, a research paper, or a practical assignment.</p>
+                        <a href="#" class="font-semibold text-sky-400 hover:text-sky-300">View Details &rarr;</a>
+                    </div>
+                </div>
+                <!-- Portfolio Item 2 -->
+                <div class="glass-effect rounded-lg overflow-hidden group">
+                    <img src="https://placehold.co/600x400/111827/a78bfa?text=My+Writings" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="My Writings on Medium">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Content & Articles</h3>
+                        <p class="text-slate-400 mb-4">I explore ideas on strategy, technology, and personal growth through my writing on Medium.</p>
+                        <a href="#" class="font-semibold text-purple-400 hover:text-purple-300">Read on Medium &rarr;</a>
+                    </div>
+                </div>
+                <!-- Portfolio Item 3 -->
+                <div class="glass-effect rounded-lg overflow-hidden group">
+                    <img src="https://placehold.co/600x400/111827/ec4899?text=Project+2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Project 2">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Another Project Title</h3>
+                        <p class="text-slate-400 mb-4">As I progress in my studies, I will showcase more of my work here. Stay tuned for updates.</p>
+                        <a href="#" class="font-semibold text-pink-400 hover:text-pink-300">Coming Soon &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Get In Touch</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-8">
+                I am always open to connecting with professionals, mentors, and peers. Whether you have a question, a collaboration idea, or just want to discuss the future of the textile industry, feel free to reach out.
+            </p>
+            <a href="mailto:your.email@example.com" class="inline-block bg-sky-500 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-sky-600 transition-colors duration-300">
+                Say Hello
+            </a>
+            <div class="flex justify-center space-x-6 mt-12">
+                <!-- Replace '#' with your actual profile links -->
+                <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.5 0h-15A4.5 4.5 0 000 4.5v15A4.5 4.5 0 004.5 24h15a4.5 4.5 0 004.5-4.5v-15A4.5 4.5 0 0019.5 0zm-11.25 19.5h-3V9h3v10.5zm-1.5-12a1.875 1.875 0 110-3.75 1.875 1.875 0 010 3.75zM19.5 19.5h-3v-5.25c0-1.25-.025-2.85-1.75-2.85-1.75 0-2.025 1.375-2.025 2.75V19.5h-3V9h2.875v1.313h.05c.4-.75 1.375-1.5 2.825-1.5 3.025 0 3.575 2 3.575 4.6v5.387z" clip-rule="evenodd"/></svg>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.238 2.633 7.855 6.357 9.252.22.04.298-.096.298-.213v-1.06c-2.55.553-3.09-1.233-3.09-1.233-.4-1.016-1.025-1.285-1.025-1.285-.8-.546.06-.535.06-.535.885.062 1.35 1.025 1.35 1.025.787 1.35 2.063.96 2.565.732.08-.57.308-1.025.565-1.26-1.95-.22-4-1.025-4-4.338 0-.96.343-1.745 1.025-2.36-.1-.22-.443-1.115.1-2.325 0 0 .737-.237 2.4 1.025A8.4 8.4 0 0112 8.312c.737 0 1.475.1 2.16.3.363-.487.7-.737 1.025-.96.737-1.2 1.763-1.2 2.4-1.2.545 1.21.2 2.105.1 2.325.68.615 1.025 1.4 1.025 2.36 0 3.325-2.05 4.113-4.013 4.338.318.275.6.813.6 1.637v2.4c0 .118.077.253.3.213C19.367 19.855 22 16.238 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">
+                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.038c-2.734 0-3.073.012-4.148.06-1.075.05-1.81.21-2.44.46-.64.25-1.17.59-1.7.1.13-.53.47-1.06.72-1.7C3.21 2.298 2.47 2.088 1.4 2.038c-1.075-.048-1.414-.06-4.148-.06s-3.073.012-4.148.06c-1.075.05-1.81.21-2.44.46-.64.25-1.17.59-1.7.1.13-.53.47-1.06.72-1.7C3.21 2.298 2.47 2.088 1.4 2.038zm0-2.038c2.768 0 3.11.012 4.192.06 1.08.05 1.96.22 2.65.49.71.27 1.32.64 1.92 1.24s.97 1.21 1.24 1.92c.27.69.44 1.57.49 2.65.048 1.082.06 1.424.06 4.192s-.012 3.11-.06 4.192c-.05 1.08-.22 1.96-.49 2.65-.27.71-.64 1.32-1.24 1.92s-1.21.97-1.92 1.24c-.69.27-1.57.44-2.65.49-1.082.048-1.424.06-4.192.06s-3.11-.012-4.192-.06c-1.08-.05-1.96-.22-2.65-.49-.71-.27-1.32-.64-1.92-1.24s-.97-1.21-1.24-1.92c-.27-.69-.44-1.57-.49-2.65-.048-1.082-.06-1.424-.06-4.192s.012-3.11.06-4.192c.05-1.08.22-1.96.49-2.65.27-.71.64-1.32 1.24-1.92S5.33 2.81 6.04 2.54c.69-.27 1.57-.44 2.65-.49 1.082-.048 1.424-.06 4.192-.06zm0 5.838a6.124 6.124 0 100 12.248 6.124 6.124 0 000-12.248zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-slate-800">
+        <p class="text-slate-500">&copy; <span id="year"></span> Tanzim Mahmud Prantik. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Dynamic Year for Footer ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // --- Particle Animation ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particlesArray;
+
+        // Mouse position
+        const mouse = {
+            x: null,
+            y: null,
+            radius: 150
+        }
+
+        window.addEventListener('mousemove', function(event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+        
+        // Set canvas size
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        setCanvasSize();
+
+        // Particle class
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+
+            // Method to draw individual particle
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            // Check particle position, mouse position, move the particle, draw the particle
+            update() {
+                // Check if particle is still within canvas
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+
+                // Check collision detection - mouse position / particle position
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < mouse.radius + this.size){
+                    if(mouse.x < this.x && this.x < canvas.width - this.size * 10){
+                        this.x += 5;
+                    }
+                    if(mouse.x > this.x && this.x > this.size * 10){
+                        this.x -= 5;
+                    }
+                    if(mouse.y < this.y && this.y < canvas.height - this.size * 10){
+                        this.y += 5;
+                    }
+                    if(mouse.y > this.y && this.y > this.size * 10){
+                        this.y -= 5;
+                    }
+                }
+                // Move particle
+                this.x += this.directionX;
+                this.y += this.directionY;
+                // Draw particle
+                this.draw();
+            }
+        }
+
+        // Create particle array
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * .4) - .2;
+                let directionY = (Math.random() * .4) - .2;
+                let color = 'rgba(167, 139, 250, 0.8)'; // violet-400
+
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+
+        // Check if particles are close enough to draw a line between them
+        function connect(){
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                    + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        opacityValue = 1 - (distance/20000);
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${opacityValue})`; // sky-400
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Resize event
+        window.addEventListener('resize', function(){
+            setCanvasSize();
+            init();
+        });
+        
+        // Mouse out event
+        window.addEventListener('mouseout', function(){
+            mouse.x = undefined;
+            mouse.y = undefined;
+        })
+
+        // Start animation
+        init();
+        animate();
+
+    </script>
 </body>
 </html>
