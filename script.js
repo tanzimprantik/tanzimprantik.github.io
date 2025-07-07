@@ -1,5 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- MOBILE NAVIGATION TOGGLE ---
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mainNav = document.querySelector('.main-nav');
+    const navLinks = document.querySelectorAll('.main-nav a');
+
+    hamburgerMenu.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('active');
+        mainNav.classList.toggle('mobile-nav-open');
+    });
+    
+    // Close mobile nav when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mainNav.classList.contains('mobile-nav-open')) {
+                hamburgerMenu.classList.remove('active');
+                mainNav.classList.remove('mobile-nav-open');
+            }
+        });
+    });
+
+
     // --- THEME TOGGLER (DARK/LIGHT MODE) ---
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -53,32 +74,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     achievementItems.forEach(item => {
         item.addEventListener('click', () => {
-            // Get data from the clicked item's data-* attributes
             const imgSrc = item.querySelector('img').src;
             const title = item.dataset.title;
             const description = item.dataset.description;
 
-            // Populate the modal
             modalImage.src = imgSrc;
             modalTitle.textContent = title;
             modalDescription.textContent = description;
 
-            // Show the modal
             modal.classList.add('visible');
         });
     });
 
-    // Function to close the modal
     const closeModal = () => {
         modal.classList.remove('visible');
     };
 
     closeModalBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
-        // Close if the user clicks on the dark overlay (outside the content)
         if (e.target === modal) {
             closeModal();
         }
     });
 });
-
