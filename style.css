@@ -227,10 +227,12 @@ section {
     width: 320px;
     height: 320px;
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--color-primary), var(--color-surface));
+    object-fit: cover;
     border: 5px solid var(--color-surface);
     box-shadow: 0 0 30px var(--color-shadow);
+    background: none; /* remove the gradient background */
 }
+
 
 /* 7. ABOUT SECTION */
 .about-container { display: flex; align-items: center; gap: 4rem; }
