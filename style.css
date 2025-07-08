@@ -366,7 +366,8 @@ section {
 }
 .contact-info a:hover { color: var(--color-primary); }
 .contact-info i { font-size: 1.5rem; }
-.contact-form .form-group { display: flex; gap: 1rem; }
+
+/* CORRECTED FORM STYLES */
 .contact-form input, .contact-form textarea {
     width: 100%;
     padding: 1rem;
@@ -378,7 +379,16 @@ section {
     margin-bottom: 1rem;
     box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
-#form-status { text-align: center; margin-top: 1rem; font-weight: 600; }
+.contact-form .form-group {
+    display: flex;
+    gap: 1rem;
+}
+/* This rule was missing, it's the key fix */
+.contact-form .form-group input {
+    width: 50%; /* Default for side-by-side */
+    flex-grow: 1; /* Allows them to fill space equally */
+}
+#form-status { text-align: center; margin-top: 1rem; font-weight: 600; min-height: 1.2em; }
 
 /* 11. FOOTER */
 .footer { text-align: center; padding: 2rem 5%; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); }
@@ -482,8 +492,17 @@ section {
     .intro-text .intro-subtitle, .intro-title { text-align: center; }
     .cta-buttons, .social-links, .contact-info { justify-content: center; }
     .image-placeholder-round { width: 250px; height: 250px; margin-bottom: 2rem; }
-    .contact-form .form-group { flex-direction: column; gap: 0; }
-    .contact-form .form-group input { margin-bottom: 1rem; }
+    
+    /* Corrected Mobile Form Layout */
+    .contact-form .form-group {
+        flex-direction: column; /* Stack Name and Email */
+        gap: 0;
+    }
+    .contact-form .form-group input {
+        width: 100%; /* Make them full width */
+        margin-bottom: 1rem;
+    }
+    
     .contact-box { padding: 2rem; }
     .section-title { font-size: 1.8rem; }
 }
