@@ -65,17 +65,21 @@ body {
 
 /* 3. TYPOGRAPHY & BUTTONS */
 section {
-    padding: 4rem 5%; /* TIGHTER section spacing */
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden; /* Prevents horizontal scroll from animations */
+  padding: 2rem 5%; /* Reduce vertical padding */
 }
+
+@media (min-width: 768px) {
+  section {
+    padding: 3rem 5%; /* More space on larger screens */
+  }
+}
+
 
 .section-title {
     font-size: 2.2rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .section-subtitle {
@@ -83,7 +87,7 @@ section {
     font-weight: 400;
     text-align: center;
     color: var(--color-text-secondary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .btn {
@@ -285,7 +289,17 @@ section {
     display: inline-block;
 }
 /* Projects & Blog Grids */
-.projects-grid, .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr); /* Force 3 columns on large screens */
+  }
+}
 .project-card, .blog-card {
     background-color: var(--color-surface);
     border-radius: 15px;
@@ -301,6 +315,13 @@ section {
 .project-info p, .blog-info p { color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1rem; }
 .project-link, .read-more { text-decoration: none; color: var(--color-primary); font-weight: 600; margin-top: auto; }
 .project-link i, .read-more i { vertical-align: middle; }
+
+.project-card:hover, .blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
 
 /* Achievements Grid */
 .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
@@ -339,6 +360,27 @@ section {
 .medium-card p { color: rgba(255,255,255,0.8); }
 .medium-card .btn-secondary { border-color: white; color: white; }
 .medium-card .btn-secondary:hover { background-color: white; color: var(--color-primary); }
+
+/*Chatgpt Corrected Blog Grid*/
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards side-by-side */
+    justify-items: center; /* center the cards */
+  }
+}
+
+@media (min-width: 1200px) {
+  .blog-grid {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
 
 /* 10. CONTACT SECTION (Layout Fixed) */
 .contact-box {
