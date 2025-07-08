@@ -239,17 +239,21 @@
                     </a>
                 </div>
                 <!-- IMPORTANT: Replace the action URL with your own from Formspree.io -->
-                <form id="contact-form" action="https://formspree.io/f/xyzjqeaq" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <input type="text" name="subject" placeholder="Subject" required>
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                    <!-- This div will show form submission status -->
-                    <p id="form-status"></p>
-                </form>
+<form id="contact-form" action="https://formspree.io/f/xyzjqeaq" method="POST" class="contact-form">
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+        <input type="text" name="subject" placeholder="Subject" required>
+    </div>
+    <div class="form-group">
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+    <p id="form-status"></p>
+</form>
+
             </div>
         </section>
     </main>
