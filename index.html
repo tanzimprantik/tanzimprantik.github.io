@@ -1,125 +1,284 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prantik | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <nav class="navbar">
-        <div class="logo" onclick="scrollToTop()">Prantik</div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#achievements">Achievements</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><button id="theme-toggle">🌙</button></li>
-        </ul>
-      </nav>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzim Mahmud Prantik | Textile Engineer</title>
+    <meta name="description" content="The professional portfolio of Tanzim Mahmud Prantik, a visionary textile engineer shaping the future of the industry.">
+    <meta name="keywords" content="Tanzim Mahmud Prantik, Textile Engineer, Portfolio, Bangladesh, KUET, Merchandising, Industrial Engineering">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons (for professional icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Your Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================================================== -->
+    <!-- HEADER & NAVIGATION -->
+    <!-- ================================================== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">Prantik</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Projects</a></li>
+                    <li><a href="#portfolio">Achievement</a></li>
+                    <li><a href="#portfolio">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="theme-toggle">
+                    <i id="theme-toggle-btn" class="ph ph-sun"></i>
+                </div>
+                <!-- Hamburger Menu Icon for Mobile -->
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
-      <section id="intro" class="intro">
-        <div class="intro-content">
-          <img src="assets/profile.jpg" alt="Prantik Profile" class="profile-pic" />
-          <h1>Hello, I’m Tanzim Mahmud Prantik</h1>
-          <h2>Textile Engineer</h2>
-          <div class="cta-buttons">
-            <a href="assets/Prantik_CV.pdf" class="btn">Download CV</a>
-            <a href="#contact" class="btn">Contact Info</a>
-          </div>
-          <div class="social-icons">
-            <a href="#"><img src="assets/linkedin.svg" alt="LinkedIn" /></a>
-            <a href="#"><img src="assets/x.svg" alt="X" /></a>
-            <a href="#"><img src="assets/instagram.svg" alt="Instagram" /></a>
-            <a href="#"><img src="assets/facebook.svg" alt="Facebook" /></a>
-            <a href="#"><img src="assets/youtube.svg" alt="YouTube" /></a>
-          </div>
-        </div>
-      </section>
+        <!-- ================================================== -->
+        <!-- SHORT INTRO SECTION -->
+        <!-- ================================================== -->
+        <section id="intro" class="intro-section">
+            <div class="intro-container">
+                <div class="intro-text">
+                    <p class="intro-subtitle">Hello, I'm</p>
+                    <h1 class="intro-title">Tanzim Mahmud Prantik</h1>
+                    <p class="intro-tagline">Textile Engineer</p>
+                    <div class="cta-buttons">
+                        <a href="assets/Tanzim_Prantik_CV.pdf" download class="btn btn-primary">Download CV</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Info</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/tanzimprantik" target="_blank" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                        <a href="https://x.com/tanzimprantik" target="_blank" aria-label="X"><i class="ph-fill ph-twitter-logo"></i></a>
+                        <a href="https://instagram.com/tanzimprantik" target="_blank" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="https://facebook.com/tanzimprantik" target="_blank" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                        <a href="https://youtube.com/@tanzimprantik" target="_blank" aria-label="YouTube"><i class="ph-fill ph-youtube-logo"></i></a>
+                    </div>
+                </div>
+                <div class="intro-image">
+                    <div class="image-placeholder-round">
+                        <!-- Place your professional headshot here by replacing this div with an <img> tag -->
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <section id="about" class="about">
-        <div class="about-img">
-          <img src="assets/about-photo.jpg" alt="About Photo" />
-        </div>
-        <div class="about-text">
-          <h2>About Me</h2>
-          <p>I’m a Textile Engineering student at KUET, passionate about bridging industry and innovation. My journey involves mastering technical expertise and communication skills to achieve impactful leadership in the textile sector. Let’s connect and grow together.</p>
-        </div>
-      </section>
+        <!-- ================================================== -->
+        <!-- ABOUT ME SECTION -->
+        <!-- ================================================== -->
+        <section id="about" class="about-section">
+            <p class="section-subtitle">Get To Know More</p>
+            <h2 class="section-title">About Me</h2>
+            <div class="about-container">
+                <div class="about-image">
+                    <div class="image-placeholder-square">
+                         <!-- Place your second photo here by replacing this div with an <img> tag -->
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Weaving Ambition with Innovation</h3>
+                    <p>
+                        As a driven Textile Engineering student at KUET, my ambition extends beyond threads and fabrics. I aim to become a transformational leader in Bangladesh's textile industry, blending technical expertise with strategic management. My journey is fueled by a passion for industrial engineering, merchandising, and a relentless pursuit of efficiency. I believe in a future where technology and tradition weave together to create a sustainable and globally competitive textile sector.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-      <section id="skills" class="skills">
-        <h2>Explore My</h2>
-        <h1>Core Competencies</h1>
-        <div class="skills-grid">
-          <div class="skill-box">
-            <h3>Digital & Technical</h3>
-            <ul>
-              <li>MS Word (Strong)</li>
-              <li>MS Excel (Developing)</li>
-              <li>Google Docs/Sheets/Drive (Strong)</li>
-              <li>Canva (Strong)</li>
-              <li>AI Tools (Learning)</li>
-              <li>Internet Research (Strong)</li>
-            </ul>
-          </div>
-          <div class="skill-box">
-            <h3>Thinking & Cognitive</h3>
-            <ul>
-              <li>Analytical Thinking (Strong)</li>
-              <li>Creative Thinking (Developing)</li>
-              <li>Problem Solving (Learning)</li>
-              <li>Curiosity & Self Learning (Strong)</li>
-              <li>Strategic Planning (Developing)</li>
-            </ul>
-          </div>
-          <div class="skill-box">
-            <h3>Communication & Interpersonal</h3>
-            <ul>
-              <li>Teamwork (Learning)</li>
-              <li>Active Listening (Developing)</li>
-              <li>Public Speaking (Learning)</li>
-              <li>Confidence (Developing)</li>
-            </ul>
-          </div>
-          <div class="skill-box">
-            <h3>Language & Leadership</h3>
-            <ul>
-              <li>English Proficiency (Developing)</li>
-              <li>Presentation Skills (Learning)</li>
-              <li>Leadership (Learning)</li>
-              <li>Emotional Intelligence (Developing)</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+        <!-- ================================================== -->
+        <!-- SKILLS SECTION -->
+        <!-- ================================================== -->
+        <section id="skills" class="skills-section">
+            <p class="section-subtitle">Explore My</p>
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4><i class="ph-fill ph-desktop-tower"></i> Digital & Technical</h4>
+                    <ul>
+                        <li><i class="ph ph-file-text"></i><strong>MS Word:</strong> Proficient</li>
+                        <li><i class="ph ph-file-x"></i><strong>MS Excel:</strong> Learning</li>
+                        <li><i class="ph ph-google-logo"></i><strong>Google Suite:</strong> Competent</li>
+                        <li><i class="ph ph-paint-brush"></i><strong>Canva:</strong> Developing</li>
+                        <li><i class="ph ph-robot"></i><strong>AI Tools:</strong> Exploring</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h4><i class="ph-fill ph-brain"></i> Thinking & Cognitive</h4>
+                    <ul>
+                        <li><i class="ph ph-chart-line"></i><strong>Analytical Thinking:</strong> Strong</li>
+                        <li><i class="ph ph-puzzle-piece"></i><strong>Problem Solving:</strong> Developing</li>
+                        <li><i class="ph ph-student"></i><strong>Self-Learning:</strong> Proficient</li>
+                        <li><i class="ph ph-path"></i><strong>Strategic Planning:</strong> Developing</li>
+                    </ul>
+                </div>
+                 <div class="skill-card">
+                    <h4><i class="ph-fill ph-users"></i> Communication</h4>
+                    <ul>
+                        <li><i class="ph ph-speaker-high"></i><strong>Public Speaking:</strong> Developing</li>
+                        <li><i class="ph ph-pencil-line"></i><strong>Technical Writing:</strong> Competent</li>
+                        <li><i class="ph ph-hands-clapping"></i><strong>Team Collaboration:</strong> Learning</li>
+                        <li><i class="ph ph-presentation-chart"></i><strong>Client Presentations:</strong> Learning</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h4><i class="ph-fill ph-crown-simple"></i> Leadership</h4>
+                    <ul>
+                        <li><i class="ph ph-kanban"></i><strong>Project Management:</strong> Learning</li>
+                        <li><i class="ph ph-scales"></i><strong>Decision Making:</strong> Developing</li>
+                        <li><i class="ph ph-fire"></i><strong>Team Motivation:</strong> Developing</li>
+                        <li><i class="ph ph-eye"></i><strong>Strategic Vision:</strong> Strong</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-      <!-- Portfolio section, projects, achievements, blog will go here -->
+        <!-- ================================================== -->
+        <!-- PORTFOLIO MAIN SECTION -->
+        <!-- ================================================== -->
+        <section id="portfolio" class="portfolio-section">
+            <p class="section-subtitle">Explore My Recent</p>
+            <h2 class="section-title">Portfolio</h2>
+            
+            <!-- Projects Sub-section -->
+            <h3 class="subsection-title">Projects</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/1F2937/FFF?text=Project+Image" alt="Project One">
+                    <div class="project-info">
+                        <h5>Fabric Defect Detection AI</h5>
+                        <p>An innovative model to automate quality control in fabric production using computer vision.</p>
+                        <a href="#" class="project-link">View Documentation <i class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/1F2937/FFF?text=Project+Image" alt="Project Two">
+                    <div class="project-info">
+                        <h5>Sustainable Dyeing Process</h5>
+                        <p>Research on eco-friendly dyes to reduce water consumption and chemical waste in textile manufacturing.</p>
+                        <a href="#" class="project-link">View Documentation <i class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+            </div>
 
-      <section id="contact" class="contact">
-        <h2>Get in Touch</h2>
-        <h1>Contact Me</h1>
-        <div class="contact-box">
-          <p><img src="assets/email.svg" alt="Email" /> tanzimprantik@gmail.com</p>
-          <p><img src="assets/linkedin.svg" alt="LinkedIn" /> linkedin.com/in/tanzimprantik</p>
-          <form action="https://formsubmit.co/tanzimprantik@gmail.com" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <input type="text" name="subject" placeholder="Subject" required />
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-          </form>
-        </div>
-      </section>
+            <!-- Achievements Sub-section -->
+            <h3 class="subsection-title">Achievements</h3>
+            <div class="achievements-grid">
+                <div class="achievement-item" data-title="HSC General Merit Scholarship" data-description="Awarded by the Cumilla Board for outstanding academic performance in the Higher Secondary Certificate examinations.">
+                    <img src="https://placehold.co/600x450/1F2937/FFF?text=Certificate" alt="HSC Scholarship">
+                </div>
+                 <div class="achievement-item" data-title="SSC General Merit Scholarship" data-description="Awarded by Cumilla Zilla School for exceptional results in the Secondary School Certificate examinations.">
+                    <img src="https://placehold.co/600x450/1F2937/FFF?text=Certificate" alt="SSC Scholarship">
+                </div>
+                <div class="achievement-item" data-title="Debate Competition Winner" data-description="Secured first place in the inter-university debate championship, showcasing strong communication skills.">
+                    <img src="https://placehold.co/600x450/1F2937/FFF?text=Achievement" alt="Debate Winner">
+                </div>
+            </div>
+            
+            <!-- Blog Sub-section -->
+            <h3 class="subsection-title">Blog</h3>
+            <div class="blog-grid">
+                <div class="blog-card medium-card">
+                    <div class="blog-info">
+                         <h4>My Writings on Medium</h4>
+                         <p>Explore my thoughts on industry trends, technology, and leadership on my official Medium blog.</p>
+                         <a href="https://medium.com/@yourprofile" target="_blank" class="btn btn-secondary">Read on Medium <i class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://placehold.co/600x300/1F2937/FFF?text=Article+Banner" alt="Blog post one">
+                    <div class="blog-info">
+                        <p class="blog-meta">July 07, 2025</p>
+                        <h5>The Rise of Smart Textiles in Bangladesh</h5>
+                        <p>A look into how IoT and smart fabrics are set to revolutionize the garments industry...</p>
+                        <a href="#" class="read-more">Read More <i class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+                 <div class="blog-card">
+                    <img src="https://placehold.co/600x300/1F2937/FFF?text=Article+Banner" alt="Blog post two">
+                    <div class="blog-info">
+                        <p class="blog-meta">June 25, 2025</p>
+                        <h5>Beyond the Assembly Line: IE for Merchandisers</h5>
+                        <p>How understanding Industrial Engineering principles can make merchandisers more effective...</p>
+                        <a href="#" class="read-more">Read More <i class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================== -->
+        <!-- CONTACT SECTION -->
+        <!-- ================================================== -->
+        <section id="contact" class="contact-section">
+            <p class="section-subtitle">Get in Touch</p>
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-box">
+                <div class="contact-info">
+                     <a href="mailto:tanzimprantik@gmail.com">
+                        <i class="ph-fill ph-envelope"></i> 
+                        tanzimprantik@gmail.com
+                    </a>
+                    <a href="https://linkedin.com/in/tanzimprantik" target="_blank">
+                        <i class="ph-fill ph-linkedin-logo"></i>
+                        tanzimprantik
+                    </a>
+                </div>
+                <!-- IMPORTANT: Replace the action URL with your own from Formspree.io -->
+                <form id="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <!-- This div will show form submission status -->
+                    <p id="form-status"></p>
+                </form>
+            </div>
+        </section>
     </main>
+    
+    <!-- ================================================== -->
+    <!-- FOOTER -->
+    <!-- ================================================== -->
+    <footer class="footer">
+        <p>© 2025 Tanzim Mahmud Prantik. All Rights Reserved.</p>
+    </footer>
 
-    <button onclick="scrollToTop()" id="backToTop">↑</button>
-
+    <!-- ================================================== -->
+    <!-- UTILITIES (Scroll to Top, Modal) -->
+    <!-- ================================================== -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="ph ph-arrow-up"></i>
+    </button>
+    
+    <div id="achievementModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <img id="modalImage" src="" alt="Enlarged Achievement">
+            <h4 id="modalTitle"></h4>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    
+    <!-- Your Script File -->
     <script src="script.js"></script>
-  </body>
+
+</body>
 </html>
